@@ -149,9 +149,4 @@ dmypy.json
 .idea/misc.xml
 .idea/modules.xml
 .idea/test_for_tayle.iml
-catalog/
-manage.py
-static/
-templates/
-test_for_tayle/
-upload/
+

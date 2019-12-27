@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Детальное описание товара {{ product.name }}</title>
+    <style>
+        body{
+            font-family: Roboto sans-serif;
+        }
+        a{
+            text-decoration: none;
+            color: grey;
+            cursor: pointer;
+        }
+        .container{
+            width: 90%;
+            margin: auto;
+            display: flex;
+        }
+        .block{
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+            color: black;
+        }
+        .block img{
+            width: 80%;
+            margin: auto;
+            max-height: 250px;
+            object-fit: contain;
+        }
+        .block div{
+            width: 90%;
+            margin: auto;
+        }
+        .breadcrumbs{
+            width: 90%;
+            margin: auto;
+            display: flex;
+            flex-direction: row;
+            padding-top: 25px;
+            padding-bottom: 25px;
+        }
+        .product-name{
+            text-align: center;
+            font-size: 1.2em;
+            padding-bottom: 3em;
+        }
+        .product-char-list{
+            display: flex;
+            flex-direction:column;
+            padding-top: 3em;
+        }
+        .product-char-row{
+            display: flex;
+            flex-direction: row;
+            background: lightslategray;
+            padding-top: 1em;
+            padding-bottom: 1em;
+            text-align: center;
+            color: whitesmoke;
+        }
+        .product-char-row:nth-child(odd){
+            color: lightslategray;
+            background: whitesmoke;
+        }
+    </style>
+
+</head>
+<body>
+<div class="breadcrumbs">
+    <a href="/">Главная</a>/<a href="/detail-section/{{ section_id }}">Вернутьсяк списку товаров в разделе</a>
+</div>
+<div class="container">
+    <div class="block">
+        <div class="product-name">{{ product.name }}</div>
+        <img src="{{ UPLOAD_URL }}/{{ product.img.url }}" alt="{{ product.name }}">
+        <div class="product-char-list">
+            {% for item in product.characteristics.all %}
+                <div class="product-char-row">
+                    <div>{{ item.name }}</div>
+                    <div>{{ item.value }}</div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+</body>
+</html>

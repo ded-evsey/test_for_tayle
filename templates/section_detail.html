@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Товары в выбранном разделе</title>
+     <style>
+         body{
+            font-family: Roboto sans-serif;
+        }
+         a{
+            text-decoration: none;
+            color: grey;
+            cursor: pointer;
+        }
+        .container{
+            width: 90%;
+            margin: auto;
+            display: flex;
+            justify-content: space-around;
+        }
+        .block{
+            display: flex;
+            width: 50%;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: black;
+        }
+        .block img{
+            width: 80%;
+            margin: auto;
+            max-height: 250px;
+            object-fit: contain;
+        }
+        .block div{
+            width: 90%;
+            margin: auto;
+            text-align: center;
+        }
+         .breadcrumbs{
+            width: 90%;
+            margin: auto;
+            display: flex;
+            flex-direction: row;
+             padding-top: 25px;
+            padding-bottom: 25px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="breadcrumbs">
+    <a href="/">Главная</a>
+</div>
+<div class="container">
+    {% for product in products %}
+            <a class="block" href="{{ section_id }}/product-detail/{{ product.id }}">
+            <img src="{{ UPLOAD_URL }}/{{ product.img.url }}">
+            <div>
+                {{ product.name }}
+            </div>
+            </a>
+        {% endfor %}
+</div>
+</body>
+</html>

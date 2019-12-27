@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список разделов</title>
+    <style>
+        body{
+            font-family: Roboto sans-serif;
+        }
+        a{
+            text-decoration: none;
+            color: grey;
+            cursor: pointer;
+        }
+        .container{
+            width: 90%;
+            margin: auto;
+            display: flex;
+        }
+        .block{
+            display: flex;
+            width: 50%;
+            flex-direction: column;
+            color: black;
+        }
+        .block img{
+            width: 80%;
+            margin: auto;
+            max-height: 250px;
+            object-fit: contain;
+        }
+        .block div{
+            width: 90%;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+{% block content %}
+    {% if object_list %}
+        <div class="container">
+        {% for object in object_list %}
+            <a class="block" href="detail-section/{{ object.id }}">
+            <img src="{{ UPLOAD_URL }}/{{ object.img.url }}">
+            <div>
+                {{ object.name }}
+            </div>
+            </a>
+        {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}
+</body>
+</html>
